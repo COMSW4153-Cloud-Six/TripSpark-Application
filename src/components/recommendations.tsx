@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Badge } from "./ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Star, MapPin, DollarSign, Clock, Heart, Navigation, BookmarkCheck } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { ImageWithFallback } from "./fallback/ImageWithFallback";
 import type { TripPlan } from "./trip-planner";
 import type { UserPreferences } from "./user-profile";
 

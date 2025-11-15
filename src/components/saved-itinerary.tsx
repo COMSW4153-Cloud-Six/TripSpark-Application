@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Star, MapPin, DollarSign, Clock, Heart, ArrowLeft } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { ImageWithFallback } from "./fallback/ImageWithFallback";
 
 export interface POI {
   id: string;
