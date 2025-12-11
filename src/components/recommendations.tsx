@@ -173,7 +173,7 @@ export function Recommendations({
   useEffect(() => {
   const userName = userPreferences['name'];
 
-  fetch(`http://0.0.0.0:8080/recommendation/${userName}`)
+  fetch(`https://recommendation-service-817898523355.us-central1.run.app/recommendation/${userName}`)
     .then((res) => res.json())
     .then((data) => {
       console.log("Recommendation API Response:", data);
