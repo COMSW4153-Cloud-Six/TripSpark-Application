@@ -6,6 +6,8 @@ import { Star, MapPin, DollarSign, Clock, Heart, Navigation, BookmarkCheck } fro
 import { ImageWithFallback } from "./fallback/ImageWithFallback";
 import type { TripPlan } from "./trip-planner";
 import type { UserPreferences } from "./user-profile";
+import React, { useState, useEffect } from "react";
+
 
 export interface POI {
   id: string;
@@ -164,6 +166,28 @@ export function Recommendations({
   const pois = allPOIs;
   const neighborhoods = generateNeighborhoods(tripPlan.destination);
   const itinerary = generateItinerary(pois, tripPlan.tripLength);
+
+  //invoke recommendation api --
+  const [sampleMessage, setSampleMessage] = useState("");
+
+  useEffect(() => {
+  const userName = userPreferences['name'];
+
+  fetch(`http://0.0.0.0:8080/recommendation/${userName}`)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("Recommendation API Response:", data);
+      setSampleMessage("Loaded Recommendations for "+userName+"!");
+    })
+    .catch((err) => {
+      console.error("Error fetching sample recommendations:", err);
+      setSampleMessage("Failed to load recommendations.");
+    });
+}, []);
+
+
+  //----end---
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 py-8 px-4">
@@ -349,6 +373,11 @@ export function Recommendations({
           </TabsContent>
         </Tabs>
       </div>
+      {sampleMessage && (
+  <p className="text-center text-sm text-gray-600 mb-2">
+    {sampleMessage}
+  </p>
+)}
     </div>
   );
 }
